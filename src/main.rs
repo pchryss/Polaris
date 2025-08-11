@@ -1,8 +1,10 @@
 use std::time::{Duration, Instant};
 
-use polaris::{constellations::CONSTELLATIONS, draw_constellation, draw_menu, draw_polaris, GuessResult};
 use color_eyre::Result;
 use crossterm::event::{self, Event, KeyCode};
+use polaris::menu::*;
+use polaris::game::*;
+use polaris::constellations::*;
 use ratatui::{
     DefaultTerminal,
 };
@@ -42,7 +44,7 @@ fn play(terminal: &mut DefaultTerminal) -> Result<()>{
     let mut result = GuessResult::NoGuess;
     let mut result_changed_at: Option<Instant> = None;
     loop {
-        terminal.draw(|f| draw_polaris(f, constellation, &input, &result))?;
+        terminal.draw(|f| draw_game(f, constellation, &input, &result))?;
         
         if event::poll(Duration::from_millis(100))? {
             if let Event::Key(key) = event::read()? {
