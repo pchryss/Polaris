@@ -11,7 +11,6 @@ pub fn draw_border(frame: &mut Frame, area: Rect) {
     let block = Block::new()
         .border_type(BorderType::Rounded)
         .borders(Borders::ALL)
-        .border_style(Style::default().fg(Color::White))
-        .title(Line::from("Polaris").centered());
+        .border_style(Style::default().fg(Color::White));
     frame.render_widget(block, area);
 }
