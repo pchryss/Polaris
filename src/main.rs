@@ -1,11 +1,10 @@
-use polaris::{constellations::{Constellation, CONSTELLATIONS}, draw_constellation};
+use polaris::{constellations::{CONSTELLATIONS}, draw_constellation};
 use color_eyre::Result;
 use crossterm::event::{self, Event};
 use ratatui::{
     DefaultTerminal,
-    widgets::{Block, Borders, Paragraph},
-    Frame,
 };
+use rand::{self, Rng};
 
 fn main() -> Result<()> {
     color_eyre::install()?;
@@ -17,7 +16,8 @@ fn main() -> Result<()> {
 
 fn run(mut terminal: DefaultTerminal) -> Result<()> {
     loop {
-        terminal.draw(|f| draw_constellation(f, &CONSTELLATIONS[0]))?;
+        let constellation = &CONSTELLATIONS[rand::rng().random_range(0..CONSTELLATIONS.len())];
+        terminal.draw(|f| draw_constellation(f, constellation))?;
         if matches!(event::read()?, Event::Key(_)) {
             break Ok(());
         }
