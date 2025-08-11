@@ -42,7 +42,7 @@ pub fn draw_menu(frame: &mut Frame) {
 }
 
 pub fn draw_welcome_instructions(frame: &mut Frame, area: Rect) {
-    let instructions = Span::styled("Click Space to Play!", Style::default().fg(Color::Red));
+    let instructions = Span::styled("Click Space to Play!", Style::default().fg(Color::Yellow));
     let paragraph = Paragraph::new(instructions)
         .alignment(Alignment::Center);
     frame.render_widget(paragraph, area);
@@ -50,18 +50,18 @@ pub fn draw_welcome_instructions(frame: &mut Frame, area: Rect) {
 
 pub fn draw_welcome(frame: &mut Frame, area: Rect) {
     let welcome_ascii = r#"
-    _    _      _                            _        
-    | |  | |    | |                          | |       
-    | |  | | ___| | ___ ___  _ __ ___   ___  | |_ ___  
-    | |/\| |/ _ \ |/ __/ _ \| '_ ` _ \ / _ \ | __/ _ \ 
-    \  /\  /  __/ | (_| (_) | | | | | |  __/ | || (_) |
-    \/  \/ \___|_|\___\___/|_| |_| |_|\___|  \__\___/ 
-    ______ _____ _       ___  ______ _____ _____     
-    | ___ \  _  | |     / _ \ | ___ \_   _/  ___|    
-    | |_/ / | | | |    / /_\ \| |_/ / | | \ `--.     
-    |  __/| | | | |    |  _  ||    /  | |  `--. \    
-    | |   \ \_/ / |____| | | || |\ \ _| |_/\__/ /    
-    \_|    \___/\_____/\_| |_/\_| \_|\___/\____/     "#;
+  _    _      _                            _        
+ | |  | |    | |                          | |       
+ | |  | | ___| | ___ ___  _ __ ___   ___  | |_ ___  
+ | |/\| |/ _ \ |/ __/ _ \| '_ ` _ \ / _ \ | __/ _ \ 
+ \  /\  /  __/ | (_| (_) | | | | | |  __/ | || (_) |
+  \/  \/ \___|_|\___\___/|_| |_| |_|\___|  \__\___/ 
+    ______ _____ _       ___  ______ _____ _____    
+    | ___ \  _  | |     / _ \ | ___ \_   _/  ___|   
+    | |_/ / | | | |    / /_\ \| |_/ / | | \ `--.    
+    |  __/| | | | |    |  _  ||    /  | |  `--. \   
+    | |   \ \_/ / |____| | | || |\ \ _| |_/\__/ /   
+    \_|    \___/\_____/\_| |_/\_| \_|\___/\____/    "#;
         let welcome = Paragraph::new(welcome_ascii)
             .alignment(Alignment::Center);
         frame.render_widget(welcome, area);
