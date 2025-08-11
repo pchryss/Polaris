@@ -1,6 +1,6 @@
 use std::time::{Duration, Instant};
 
-use polaris::{constellations::CONSTELLATIONS, draw_constellation, draw_polaris, GuessResult};
+use polaris::{constellations::CONSTELLATIONS, draw_constellation, draw_menu, draw_polaris, GuessResult};
 use color_eyre::Result;
 use crossterm::event::{self, Event, KeyCode};
 use ratatui::{
@@ -17,12 +17,30 @@ fn main() -> Result<()> {
 }
 
 fn run(mut terminal: DefaultTerminal) -> Result<()> {
+    loop {
+        terminal.draw(|f| draw_menu(f))?;
+        if let Event::Key(key) = event::read()? {
+            match key.code {
+                KeyCode::Char(' ') => {
+                    play(&mut terminal)?
+                }
+                KeyCode::Esc => {
+                    return Ok(())
+                }
+                _ => {
 
+                }
+            }
+        }
+    }
+    //play(terminal)
+}
+
+fn play(terminal: &mut DefaultTerminal) -> Result<()>{
     let mut input = String::new();
     let mut constellation = &CONSTELLATIONS[rand::rng().random_range(0..CONSTELLATIONS.len())];
     let mut result = GuessResult::NoGuess;
     let mut result_changed_at: Option<Instant> = None;
-
     loop {
         terminal.draw(|f| draw_polaris(f, constellation, &input, &result))?;
         
