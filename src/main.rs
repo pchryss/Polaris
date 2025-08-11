@@ -23,7 +23,7 @@ fn run(mut terminal: DefaultTerminal) -> Result<()> {
         terminal.draw(|f| draw_menu(f))?;
         if let Event::Key(key) = event::read()? {
             match key.code {
-                KeyCode::Char(' ') => {
+                KeyCode::Char('s') | KeyCode::Char('S') => {
                     play(&mut terminal)?
                 }
                 KeyCode::Esc => {

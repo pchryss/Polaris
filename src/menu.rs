@@ -42,8 +42,9 @@ pub fn draw_menu(frame: &mut Frame) {
 }
 
 pub fn draw_welcome_instructions(frame: &mut Frame, area: Rect) {
-    let instructions = Span::styled("Click Space to Play!", Style::default().fg(Color::Yellow));
-    let paragraph = Paragraph::new(instructions)
+
+    let paragraph = Paragraph::new("S -> Start Game\nP -> Profile")
+        .style(Style::default().fg(Color::Yellow))
         .alignment(Alignment::Center);
     frame.render_widget(paragraph, area);
 }
