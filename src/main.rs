@@ -29,6 +29,12 @@ fn run(mut terminal: DefaultTerminal) -> Result<()> {
                 KeyCode::Backspace => {
                     input.pop();
                 }
+                KeyCode::Enter => {
+                    match input.eq_ignore_ascii_case(constellation.name) {
+                        true => println!("Correct!"),
+                        false => println!("Incorrect :(")
+                    }
+                }
                 KeyCode::Esc => {
                     break Ok(());
                 }
