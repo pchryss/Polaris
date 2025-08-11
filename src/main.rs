@@ -1,6 +1,6 @@
 use polaris::{constellations::CONSTELLATIONS, draw_constellation, draw_polaris};
 use color_eyre::Result;
-use crossterm::event::{self, Event};
+use crossterm::event::{self, Event, KeyCode};
 use ratatui::{
     DefaultTerminal,
 };
@@ -15,11 +15,25 @@ fn main() -> Result<()> {
 }
 
 fn run(mut terminal: DefaultTerminal) -> Result<()> {
+
+    let mut input = String::new();
+    let constellation = &CONSTELLATIONS[rand::rng().random_range(0..CONSTELLATIONS.len())];
+
     loop {
-        let constellation = &CONSTELLATIONS[rand::rng().random_range(0..CONSTELLATIONS.len())];
-        terminal.draw(|f| draw_polaris(f, constellation))?;
-        if matches!(event::read()?, Event::Key(_)) {
-            break Ok(());
+        terminal.draw(|f| draw_polaris(f, constellation, &input))?;
+            if let Event::Key(key) = event::read()? {
+            match key.code {
+                KeyCode::Char(c) => {
+                    input.push(c);
+                }
+                KeyCode::Backspace => {
+                    input.pop();
+                }
+                KeyCode::Esc => {
+                    break Ok(());
+                }
+                _ => {}
+            }
         }
     }
 }
