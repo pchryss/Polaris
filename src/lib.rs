@@ -1,12 +1,18 @@
 use color_eyre::owo_colors::colors::xterm;
 use ratatui::{
-    layout::{Alignment, Constraint, Direction, Layout, Rect}, style::{Color, Style}, text::Line, widgets::{Block, BorderType, Borders, Paragraph}, Frame
+    layout::{Alignment, Constraint, Direction, Layout, Rect}, style::{Color, Style}, text::{Line, Span}, widgets::{Block, BorderType, Borders, Paragraph}, Frame
 };
 pub mod constellations;
 
 use crate::constellations::Constellation;
 
-pub fn draw_polaris(frame: &mut Frame, constellation: &Constellation, input: &str) {
+pub enum GuessResult {
+    NoGuess,
+    Correct,
+    Incorrect
+}
+
+pub fn draw_polaris(frame: &mut Frame, constellation: &Constellation, input: &str, result: &GuessResult) {
     let size = frame.area();
     let width = 50;
     let height = 20;
@@ -26,20 +32,28 @@ pub fn draw_polaris(frame: &mut Frame, constellation: &Constellation, input: &st
         height: area.height - 2
     };
     let input_height = 3;
+    let result_height = 2;
     let constellation_area = Rect {
         x: inner_area.x,
         y: inner_area.y,
         width: inner_area.width,
-        height: inner_area.height - input_height,
+        height: inner_area.height - input_height - result_height,
     };
-    let input_area = Rect {
+    let result_area = Rect {
         x: inner_area.x,
         y: inner_area.y + constellation_area.height,
         width: inner_area.width,
         height: input_height,
     };
+    let input_area = Rect {
+        x: inner_area.x,
+        y: inner_area.y + constellation_area.height + result_height,
+        width: inner_area.width,
+        height: input_height,
+    };
 
     draw_constellation(frame, constellation, constellation_area);
+    draw_result(frame, result, result_area);
     draw_input(frame, input, input_area);
 }
 
@@ -50,6 +64,19 @@ pub fn draw_border(frame: &mut Frame, area: Rect) {
         .border_style(Style::default().fg(Color::White))
         .title(Line::from("Polaris").centered());
     frame.render_widget(block, area);
+}
+
+pub fn draw_result(frame: &mut Frame, result: &GuessResult, area: Rect) {
+    let span = match result {
+        GuessResult::NoGuess => Span::raw(""),
+
+        GuessResult::Correct => Span::styled("Correct!", Style::default().fg(Color::Green)),
+
+        GuessResult::Incorrect => Span::styled("Incorrect :(", Style::default().fg(Color::Red))
+    };
+    let paragraph = Paragraph::new(span)
+        .alignment(Alignment::Center);
+    frame.render_widget(paragraph, area);
 }
 
 pub fn draw_constellation(frame: &mut Frame, constellation: &Constellation, area: Rect) {
