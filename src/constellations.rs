@@ -1,6 +1,6 @@
 pub struct Constellation {
     pub name: &'static str,
-    pub pattern: [&'static str; 11],
+    pub pattern: [&'static str; 13],
 }
 
 pub const CONSTELLATIONS : &[Constellation] = &[
@@ -13,10 +13,29 @@ pub const CONSTELLATIONS : &[Constellation] = &[
     VIRGO,
 ];
 
+pub const SAGGITTARIUS: Constellation =  Constellation {
+    name: "Saggittarius",
+    pattern: [
+        "       *                      ",
+        "         *                    ",
+        "               *          *   ",
+        "             *                ",
+        "                      *       ",
+        "      *        *  *           ",
+        "             *        *      *",
+        " *              *         *   ",
+        "                     *        ",
+        "   *                   *      ",
+        "          *                   ",
+        "     *                        ",
+        "          *                   ",
+    ]
+};
 
 pub const SCORPIUS: Constellation =  Constellation {
     name: "Scorpius",
     pattern: [
+        "                              ",
         "                        *     ",
         "                         *    ",
         "                   *      *   ",
@@ -28,6 +47,7 @@ pub const SCORPIUS: Constellation =  Constellation {
         "   *                          ",
         "  *           *               ",
         "     *   *                    ",
+        "                              ",
 
     ]
 };
@@ -35,6 +55,7 @@ pub const SCORPIUS: Constellation =  Constellation {
 pub const VIRGO: Constellation =  Constellation {
     name: "Virgo",
     pattern: [
+        "                              ",
         "              *               ",
         "                             *",
         "                  *           ",
@@ -46,6 +67,7 @@ pub const VIRGO: Constellation =  Constellation {
         "  *    *           *          ",
         "    *                         ",
         "           *                  ",
+        "                              ",
 
     ]
 };
@@ -53,6 +75,7 @@ pub const VIRGO: Constellation =  Constellation {
 pub const LIBRA: Constellation =  Constellation {
     name: "Libra",
     pattern: [
+        "                              ",
         "                              ",
         "              *               ",
         "                              ",
@@ -64,12 +87,15 @@ pub const LIBRA: Constellation =  Constellation {
         "            *                 ",
         "           *                  ",
         "                              ",
+        "                              ",
+
     ]
 };
 
 pub const CANCER: Constellation =  Constellation {
     name: "Cancer",
     pattern: [
+        "                              ",
         "                              ",
         "             *                ",
         "                              ",
@@ -81,12 +107,14 @@ pub const CANCER: Constellation =  Constellation {
         "                              ",
         "                    *         ",
         "                              ",
+        "                              ",
     ]
 };
 
 pub const BIG_DIPPER: Constellation =  Constellation {
     name: "Big Dipper",
     pattern: [
+        "                              ",
         "                              ",
         "                              ",
         "                              ",
@@ -98,12 +126,14 @@ pub const BIG_DIPPER: Constellation =  Constellation {
         "                              ",
         "                              ",
         "                              ",
+        "                              ",
     ]
 };
 
 pub const LEPUS: Constellation =  Constellation {
     name: "Lepus",
     pattern: [
+        "                              ",
         "                              ",
         "                      *  *    ",
         "     *                        ",
@@ -115,12 +145,14 @@ pub const LEPUS: Constellation =  Constellation {
         "           *             *    ",
         "                              ",
         "                              ",
+        "                              ",
     ]
 };
 
 pub const AQUARIUS: Constellation =  Constellation {
     name: "Aquarius",
     pattern: [
+        "                              ",
         "                              ",
         "                     *        ",
         "                *             ",
@@ -132,6 +164,7 @@ pub const AQUARIUS: Constellation =  Constellation {
         "               *   *          ",
         "             *         *      ",
         "                              ",
+        "                              ",
 
     ]
 };
@@ -139,6 +172,7 @@ pub const AQUARIUS: Constellation =  Constellation {
 pub const UNKNOWN: Constellation =  Constellation {
     name: "UNKNOWN",
     pattern: [
+        "                              ",
         "                              ",
         "                              ",
         "            ,------.          ",
@@ -150,5 +184,7 @@ pub const UNKNOWN: Constellation =  Constellation {
         "            '---'             ",
         "                              ",
         "                              ",
+        "                              ",
+
     ]
 };
