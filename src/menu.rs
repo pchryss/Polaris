@@ -43,7 +43,7 @@ pub fn draw_menu(frame: &mut Frame) {
 
 pub fn draw_welcome_instructions(frame: &mut Frame, area: Rect) {
 
-    let paragraph = Paragraph::new("E -> Explore the Stars\n  P -> Planetarium\n ESC -> Exit Polaris")
+    let paragraph = Paragraph::new("     E -> Explore the Stars\nP -> Planetarium\n  ESC -> Exit Polaris")
         .style(Style::default().fg(Color::Yellow))
         .alignment(Alignment::Center);
     frame.render_widget(paragraph, area);

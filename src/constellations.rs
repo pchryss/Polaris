@@ -4,10 +4,85 @@ pub struct Constellation {
 }
 
 pub const CONSTELLATIONS : &[Constellation] = &[
-    BIG_DIPPER,
-    LEPUS,
     AQUARIUS,
+    BIG_DIPPER,
+    CANCER,
+    LIBRA,
+    LEPUS,
+    SCORPIUS,
+    VIRGO,
 ];
+
+
+pub const SCORPIUS: Constellation =  Constellation {
+    name: "Scorpius",
+    pattern: [
+        "                        *     ",
+        "                         *    ",
+        "                   *      *   ",
+        "                 *            ",
+        "                              ",
+        "               *              ",
+        "                              ",
+        "    *         *               ",
+        "   *                          ",
+        "  *           *               ",
+        "     *   *                    ",
+
+    ]
+};
+
+pub const VIRGO: Constellation =  Constellation {
+    name: "Virgo",
+    pattern: [
+        "              *               ",
+        "                             *",
+        "                  *           ",
+        "                      *       ",
+        "                              ",
+        "         *    *               ",
+        " *                 *          ",
+        "                              ",
+        "  *    *           *          ",
+        "    *                         ",
+        "           *                  ",
+
+    ]
+};
+
+pub const LIBRA: Constellation =  Constellation {
+    name: "Libra",
+    pattern: [
+        "                              ",
+        "              *               ",
+        "                              ",
+        "           *        *         ",
+        "                              ",
+        "                              ",
+        "                  *           ",
+        "                              ",
+        "            *                 ",
+        "           *                  ",
+        "                              ",
+    ]
+};
+
+pub const CANCER: Constellation =  Constellation {
+    name: "Cancer",
+    pattern: [
+        "                              ",
+        "             *                ",
+        "                              ",
+        "                              ",
+        "              *               ",
+        "             *                ",
+        "                              ",
+        "         *                    ",
+        "                              ",
+        "                    *         ",
+        "                              ",
+    ]
+};
 
 pub const BIG_DIPPER: Constellation =  Constellation {
     name: "Big Dipper",
