@@ -4,6 +4,7 @@ use color_eyre::Result;
 use crossterm::event::{self, Event, KeyCode};
 use polaris::menu::*;
 use polaris::game::*;
+use polaris::planetarium::*;
 use polaris::constellations::*;
 use ratatui::{
     DefaultTerminal,
@@ -23,8 +24,11 @@ fn run(mut terminal: DefaultTerminal) -> Result<()> {
         terminal.draw(|f| draw_menu(f))?;
         if let Event::Key(key) = event::read()? {
             match key.code {
-                KeyCode::Char('s') | KeyCode::Char('S') => {
+                KeyCode::Char('e') | KeyCode::Char('E') => {
                     play(&mut terminal)?
+                }
+                KeyCode::Char('p') | KeyCode::Char('P') => {
+                    planetarium(&mut terminal)?
                 }
                 KeyCode::Esc => {
                     return Ok(())
@@ -36,6 +40,35 @@ fn run(mut terminal: DefaultTerminal) -> Result<()> {
         }
     }
     //play(terminal)
+}
+
+fn planetarium(terminal: &mut DefaultTerminal) -> Result<()>{
+
+    let mut selected = 0;
+
+    loop {
+        terminal.draw(|f| draw_planeterium(f, selected))?;
+        if event::poll(Duration::from_millis(100))? {
+            if let Event::Key(key) = event::read()? {
+                match key.code {
+                    KeyCode::Esc => {
+                        break Ok(());
+                    }
+                    KeyCode::Up => {
+                        if selected > 0 {
+                            selected -= 1;
+                        }
+                    }
+                    KeyCode::Down => {
+                        if selected < CONSTELLATIONS.len() - 1 {
+                            selected += 1;
+                        }
+                    }
+                    _ => {}
+                }
+            }
+        }
+    }
 }
 
 fn play(terminal: &mut DefaultTerminal) -> Result<()>{

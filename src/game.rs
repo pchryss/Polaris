@@ -4,6 +4,7 @@ use ratatui::{
 };
 
 use crate::draw_border;
+use crate::draw_exit_instructions;
 use crate::constellations::Constellation;
 
 pub enum GuessResult {
@@ -58,16 +59,10 @@ pub fn draw_game(frame: &mut Frame, constellation: &Constellation, input: &str, 
         width: inner_area.width,
         height: input_height,
     };
-    draw_game_instructions(frame, instructions_area);
+    draw_exit_instructions(frame, instructions_area);
     draw_constellation(frame, constellation, constellation_area);
     draw_result(frame, result, result_area);
     draw_input(frame, input, input_area);
-}
-
-pub fn draw_game_instructions(frame: &mut Frame, area: Rect) {
-    let instructions = Span::styled("< Esc", Style::default().fg(Color::Yellow));
-    let paragraph = Paragraph::new(instructions);
-    frame.render_widget(paragraph, area);
 }
 
 pub fn draw_result(frame: &mut Frame, result: &GuessResult, area: Rect) {
