@@ -2,10 +2,12 @@ use std::time::{Duration, Instant};
 
 use color_eyre::Result;
 use crossterm::event::{self, Event, KeyCode};
+use polaris::load_data;
 use polaris::menu::*;
 use polaris::game::*;
 use polaris::planetarium::*;
 use polaris::constellations::*;
+use polaris::save_data;
 use ratatui::{
     DefaultTerminal,
 };
@@ -76,6 +78,8 @@ fn play(terminal: &mut DefaultTerminal) -> Result<()>{
     let mut constellation = &CONSTELLATIONS[rand::rng().random_range(0..CONSTELLATIONS.len())];
     let mut result = GuessResult::NoGuess;
     let mut result_changed_at: Option<Instant> = None;
+    let mut data = load_data();
+
     loop {
         terminal.draw(|f| draw_game(f, constellation, &input, &result))?;
         
@@ -90,7 +94,10 @@ fn play(terminal: &mut DefaultTerminal) -> Result<()>{
                     }
                     KeyCode::Enter => {
                         result = match input.eq_ignore_ascii_case(constellation.name) {
-                            true => GuessResult::Correct,
+                            true => {
+                                data.insert(constellation.name.to_string());
+                                GuessResult::Correct
+                            }
                             false => GuessResult::Incorrect
                         };
                         input.clear();
@@ -98,6 +105,7 @@ fn play(terminal: &mut DefaultTerminal) -> Result<()>{
                         constellation = &CONSTELLATIONS[rand::rng().random_range(0..CONSTELLATIONS.len())];
                     }
                     KeyCode::Esc => {
+                        save_data(&data);
                         break Ok(());
                     }
                     _ => {}

@@ -3,7 +3,7 @@ use ratatui::{
     layout::{Alignment, Constraint, Direction, Layout, Rect}, style::{Color, Modifier, Style}, text::{Line, Span}, widgets::{Block, BorderType, Borders, List, ListItem, ListState, Paragraph}, Frame
 };
 
-use crate::{constellations::CONSTELLATIONS, draw_border, game::draw_constellation};
+use crate::{constellations::CONSTELLATIONS, draw_border, game::draw_constellation, load_data};
 use crate::draw_exit_instructions;
 use crate::constellations::Constellation;
 
@@ -58,6 +58,9 @@ pub fn draw_selected(frame: &mut Frame, area: Rect, selected: usize) {
 }
 
 pub fn draw_list(frame: &mut Frame, area: Rect, selected: usize) {
+    
+    let data = load_data();
+
     let block = Block::new().borders(Borders::ALL);
     frame.render_widget(block, area);
 
@@ -70,8 +73,14 @@ pub fn draw_list(frame: &mut Frame, area: Rect, selected: usize) {
         } else {
             Style::default()
         };
-        items.push(ListItem::new(Span::styled(CONSTELLATIONS[i].name.to_string(), style)));
+        let s = if data.contains(CONSTELLATIONS[i].name) {
+            CONSTELLATIONS[i].name.to_string()
+        } else {
+            "?????????".to_string()
+        };
+        items.push(ListItem::new(Span::styled(s, style)));
     }
+
     let list = List::new(items);
     
     let mut state = ListState::default();
@@ -80,7 +89,7 @@ pub fn draw_list(frame: &mut Frame, area: Rect, selected: usize) {
         x: area.x + 2,
         y: area.y + 1,
         width: area.width - 2,
-        height: area.height - 1
+        height: area.height - 2
     };
     frame.render_stateful_widget(list, list_area, &mut state);
 }

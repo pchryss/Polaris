@@ -6,7 +6,7 @@ pub struct Constellation {
 pub const CONSTELLATIONS : &[Constellation] = &[
     BIG_DIPPER,
     LEPUS,
-    AQUARIUS
+    AQUARIUS,
 ];
 
 pub const BIG_DIPPER: Constellation =  Constellation {
