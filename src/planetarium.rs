@@ -1,6 +1,6 @@
-use color_eyre::owo_colors::colors::xterm;
+use color_eyre::owo_colors::{colors::xterm, OwoColorize};
 use ratatui::{
-    layout::{Alignment, Constraint, Direction, Layout, Rect}, style::{Color, Modifier, Style}, text::{Line, Span}, widgets::{Block, BorderType, Borders, Paragraph}, Frame
+    layout::{Alignment, Constraint, Direction, Layout, Rect}, style::{Color, Modifier, Style}, text::{Line, Span}, widgets::{Block, BorderType, Borders, List, ListItem, ListState, Paragraph}, Frame
 };
 
 use crate::{constellations::CONSTELLATIONS, draw_border, game::draw_constellation};
@@ -36,7 +36,7 @@ pub fn draw_planeterium(frame: &mut Frame, selected: usize) {
     let list_area = Rect {
         x: inner_area.x,
         y: inner_area.y + instructions_area.height,
-        width: inner_area.width / 4,
+        width: inner_area.width / 3,
         height: inner_area.height - instructions_area.height
     };
     let constellation_area = Rect {
@@ -59,22 +59,28 @@ pub fn draw_selected(frame: &mut Frame, area: Rect, selected: usize) {
 
 pub fn draw_list(frame: &mut Frame, area: Rect, selected: usize) {
     let block = Block::new().borders(Borders::ALL);
-    let mut list: Vec<Line> = Vec::new();
-    for i in 0..CONSTELLATIONS.len() {
-        let span = if i == selected {
-            Line::styled(
-                CONSTELLATIONS[i].name.to_string(),
-                Style::default().add_modifier(Modifier::BOLD),
-            )
-        } else {
-            Line::raw(CONSTELLATIONS[i].name)
-        };
-        list.push(span);
-
-    }
     frame.render_widget(block, area);
-    let list = Paragraph::new(list)
-        .alignment(Alignment::Center)
-        .block(Block::new().borders(Borders::ALL));
-    frame.render_widget(list, area);
+
+    let mut items: Vec<ListItem> = Vec::new();
+    for i in 0..CONSTELLATIONS.len() {
+        let style = if i == selected {
+            Style::default()
+                .fg(Color::Yellow)
+                .add_modifier(Modifier::BOLD)
+        } else {
+            Style::default()
+        };
+        items.push(ListItem::new(Span::styled(CONSTELLATIONS[i].name.to_string(), style)));
+    }
+    let list = List::new(items);
+    
+    let mut state = ListState::default();
+    state.select(Some(selected));
+    let list_area = Rect {
+        x: area.x + 2,
+        y: area.y + 1,
+        width: area.width - 2,
+        height: area.height - 1
+    };
+    frame.render_stateful_widget(list, list_area, &mut state);
 }
