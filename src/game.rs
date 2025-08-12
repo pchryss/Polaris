@@ -34,7 +34,7 @@ pub fn draw_game(frame: &mut Frame, constellation: &Constellation, input: &str, 
     };
     let input_height = 3;
     let result_height = 2;
-    let instructions_height = 2;
+    let instructions_height = 1;
     let constellation_area = Rect {
         x: inner_area.x,
         y: inner_area.y + instructions_height,
