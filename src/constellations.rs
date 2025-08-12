@@ -60,3 +60,20 @@ pub const AQUARIUS: Constellation =  Constellation {
 
     ]
 };
+
+pub const UNKNOWN: Constellation =  Constellation {
+    name: "UNKNOWN",
+    pattern: [
+        "                              ",
+        "                              ",
+        "            ,------.          ",
+        "           '  .--.  '         ",
+        "           '--' _|  |         ",
+        "            .--' __'          ",
+        "            `---'             ",
+        "            .---.             ",
+        "            '---'             ",
+        "                              ",
+        "                              ",
+    ]
+};

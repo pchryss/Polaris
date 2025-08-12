@@ -3,7 +3,7 @@ use ratatui::{
     layout::{Alignment, Constraint, Direction, Layout, Rect}, style::{Color, Modifier, Style}, text::{Line, Span}, widgets::{Block, BorderType, Borders, List, ListItem, ListState, Paragraph}, Frame
 };
 
-use crate::{constellations::CONSTELLATIONS, draw_border, game::draw_constellation, load_data};
+use crate::{constellations::{self, CONSTELLATIONS, UNKNOWN}, draw_border, game::draw_constellation, load_data};
 use crate::draw_exit_instructions;
 use crate::constellations::Constellation;
 
@@ -51,9 +51,15 @@ pub fn draw_planeterium(frame: &mut Frame, selected: usize) {
 }
 
 pub fn draw_selected(frame: &mut Frame, area: Rect, selected: usize) {
+    let data = load_data();
     let block = Block::new().borders(Borders::ALL);
     frame.render_widget(block, area);
-    draw_constellation(frame, &CONSTELLATIONS[selected], area);
+    let constellation = if data.contains(CONSTELLATIONS[selected].name) {
+        &CONSTELLATIONS[selected]
+    } else {
+        &UNKNOWN
+    };
+    draw_constellation(frame, &constellation, area);
 
 }
 
