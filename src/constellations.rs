@@ -9,6 +9,7 @@ pub const CONSTELLATIONS : &[Constellation] = &[
     CANCER,
     LIBRA,
     LEPUS,
+    SAGGITTARIUS,
     SCORPIUS,
     VIRGO,
 ];

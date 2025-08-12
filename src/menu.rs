@@ -6,7 +6,7 @@ use crate::draw_border;
 pub fn draw_menu(frame: &mut Frame) {
     let size = frame.area();
     let width = 60;
-    let height = 20;
+    let height = 25;
     let x = size.width.saturating_sub(width) / 2;
     let y = size.height.saturating_sub(height) / 2;
     let area = Rect {
