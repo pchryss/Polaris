@@ -44,6 +44,7 @@ cargo run
 
 ## Usage
 - Navigate the menu using the on-screen instructions.
+
 **Explore Mode:**  
 - A random constellation is displayed.  
 - Type its name to "explore" it and add it to your collection.  
@@ -75,5 +76,5 @@ Please follow Rust’s standard coding conventions and include clear description
 ---
 
 ## License
-This project is licensed under **MIT OR Apache-2.0**.  
+This project is licensed under **MIT**.  
 See the [LICENSE](LICENSE) file for details.
