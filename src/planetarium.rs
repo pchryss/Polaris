@@ -2,9 +2,8 @@ use ratatui::{
     layout::{Alignment,Rect}, style::{Color, Modifier, Style}, text::{Span}, widgets::{Block,Borders, List, ListItem, ListState, Paragraph}, Frame
 };
 
-use crate::{constellations::{self, CONSTELLATIONS, UNKNOWN}, draw_border, game::draw_constellation, load_data};
+use crate::{constellations::{CONSTELLATIONS, UNKNOWN}, draw_border, game::draw_constellation, load_data};
 use crate::draw_exit_instructions;
-use crate::constellations::Constellation;
 
 pub fn draw_planeterium(frame: &mut Frame, selected: usize) {
     let size = frame.area();
