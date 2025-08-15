@@ -4,11 +4,13 @@ pub struct Constellation {
 }
 
 pub const CONSTELLATIONS : &[Constellation] = &[
+    AQUILA,
     ARIES,
     AQUARIUS,
     BIG_DIPPER,
     CANCER,
     CAPRICORN,
+    CASSIOPEIA,
     GEMINI,
     LIBRA,
     LEO,
@@ -19,6 +21,44 @@ pub const CONSTELLATIONS : &[Constellation] = &[
     TAURUS,
     VIRGO,
 ];
+
+pub const CASSIOPEIA: Constellation =  Constellation {
+    name: "Cassiopeia",
+    pattern: [
+        "                              ",
+        "                              ",
+        "                            ",
+        "                             ",
+        "    *                         ",
+        "                             ",
+        "                *         *      ",
+        "          *                    ",
+        "                             ",
+        "                    *        ",
+        "                            ",
+        "                             ",
+        "                              ",
+    ]
+};
+
+pub const AQUILA: Constellation =  Constellation {
+    name: "Aquila",
+    pattern: [
+        "                              ",
+        "                              ",
+        "                      *       ",
+        "                    *         ",
+        "         *                    ",
+        "        *                     ",
+        "       *                      ",
+        "                              ",
+        "                 *            ",
+        "        *                     ",
+        "    *         *               ",
+        "                       *      ",
+        "                              ",
+    ]
+};
 
 pub const LEO: Constellation =  Constellation {
     name: "Leo",
