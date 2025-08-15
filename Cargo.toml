@@ -1,7 +1,12 @@
 [package]
 name = "polaris"
-version = "0.1.0"
+version = "1.0.0"
 edition = "2024"
+description = "An interactive terminal-based application for exploring and learning about constellations."
+keywords = ["tui", "game", "constellations", "astronomy", "educational"]
+license = "MIT"
+categories = ["games"]
+repository = "https://github.com/pchryss/Polaris"
 
 [dependencies]
 color-eyre = "0.6.5"
