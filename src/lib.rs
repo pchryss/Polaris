@@ -13,6 +13,13 @@ pub mod planetarium;
 
 
 pub fn draw_border(frame: &mut Frame, area: Rect) {
+    if area.width < 10 || area.height < 3 {
+        let warning = Paragraph::new("Terminal too small!")
+            .alignment(Alignment::Center)
+            .style(Style::default().fg(Color::Yellow));
+        frame.render_widget(warning, area);
+        return;
+    }
     let block = Block::new()
         .border_type(BorderType::Rounded)
         .borders(Borders::ALL)

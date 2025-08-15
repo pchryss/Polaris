@@ -15,6 +15,13 @@ pub fn draw_menu(frame: &mut Frame) {
         width,
         height,
     };
+    if size.width < 60 || size.height < 25 {
+        let warning = Paragraph::new("Terminal too small!")
+            .alignment(Alignment::Center)
+            .style(Style::default().fg(Color::Yellow));
+        frame.render_widget(warning, size);
+        return;
+    }
     let inner_area = Rect {
         x: area.x + 1,
         y: area.y + 1,
