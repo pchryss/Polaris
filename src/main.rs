@@ -79,9 +79,10 @@ fn play(terminal: &mut DefaultTerminal) -> Result<()>{
     let mut result = GuessResult::NoGuess;
     let mut result_changed_at: Option<Instant> = None;
     let mut data = load_data();
+    let mut answer = "";
 
     loop {
-        terminal.draw(|f| draw_game(f, constellation, &input, &result))?;
+        terminal.draw(|f| draw_game(f, constellation, &input, &result, answer))?;
         
         if event::poll(Duration::from_millis(100))? {
             if let Event::Key(key) = event::read()? {
@@ -98,7 +99,10 @@ fn play(terminal: &mut DefaultTerminal) -> Result<()>{
                                 data.insert(constellation.name.to_string());
                                 GuessResult::Correct
                             }
-                            false => GuessResult::Incorrect
+                            false => {
+                                answer = constellation.name;
+                                GuessResult::Incorrect
+                            }
                         };
                         input.clear();
                         result_changed_at = Some(Instant::now());
@@ -117,6 +121,7 @@ fn play(terminal: &mut DefaultTerminal) -> Result<()>{
             if time.elapsed() >= Duration::from_millis(1000) {
                 result = GuessResult::NoGuess;
                 result_changed_at = None;
+                answer = "";
             }
         }
     }

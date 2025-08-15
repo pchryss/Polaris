@@ -13,7 +13,7 @@ pub enum GuessResult {
     Incorrect
 }
 
-pub fn draw_game(frame: &mut Frame, constellation: &Constellation, input: &str, result: &GuessResult) {
+pub fn draw_game(frame: &mut Frame, constellation: &Constellation, input: &str, result: &GuessResult, answer: &str) {
     let size = frame.area();
     let width = 60;
     let height = 25;
@@ -61,18 +61,20 @@ pub fn draw_game(frame: &mut Frame, constellation: &Constellation, input: &str, 
     };
     draw_exit_instructions(frame, instructions_area);
     draw_constellation(frame, constellation, constellation_area);
-    draw_result(frame, result, result_area);
+    draw_result(frame, result, result_area, answer);
     draw_input(frame, input, input_area);
 }
 
-pub fn draw_result(frame: &mut Frame, result: &GuessResult, area: Rect) {
+pub fn draw_result(frame: &mut Frame, result: &GuessResult, area: Rect, answer: &str) {
     let span = match result {
         GuessResult::NoGuess => Span::raw(""),
 
         GuessResult::Correct => Span::styled("Correct!", Style::default().fg(Color::Green)),
 
-        GuessResult::Incorrect => Span::styled("Incorrect :(", Style::default().fg(Color::Red))
-    };
+        GuessResult::Incorrect => Span::styled(
+            format!("Incorrect :( ({})", answer),
+            Style::default().fg(Color::Red),
+        ),    };
     let paragraph = Paragraph::new(span)
         .alignment(Alignment::Center);
     frame.render_widget(paragraph, area);
