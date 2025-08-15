@@ -1,6 +1,5 @@
-use color_eyre::owo_colors::{colors::xterm, OwoColorize};
 use ratatui::{
-    layout::{Alignment, Constraint, Direction, Layout, Rect}, style::{Color, Modifier, Style}, text::{Line, Span}, widgets::{Block, BorderType, Borders, List, ListItem, ListState, Paragraph}, Frame
+    layout::{Alignment,Rect}, style::{Color, Modifier, Style}, text::{Span}, widgets::{Block,Borders, List, ListItem, ListState, Paragraph}, Frame
 };
 
 use crate::{constellations::{self, CONSTELLATIONS, UNKNOWN}, draw_border, game::draw_constellation, load_data};

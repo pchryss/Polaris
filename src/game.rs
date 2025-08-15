@@ -1,6 +1,5 @@
-use color_eyre::owo_colors::colors::xterm;
 use ratatui::{
-    layout::{Alignment, Constraint, Direction, Layout, Rect}, style::{Color, Style}, text::{Line, Span}, widgets::{Block, BorderType, Borders, Paragraph}, Frame
+    layout::{Alignment,Rect}, style::{Color, Style}, text::{Span}, widgets::{Block,Borders, Paragraph}, Frame
 };
 
 use crate::draw_border;
