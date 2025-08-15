@@ -15,7 +15,7 @@ pub const CONSTELLATIONS : &[Constellation] = &[
     LEPUS,
     PISCES,
     SAGGITTARIUS,
-    SCORPIUS,
+    SCORPIO,
     TAURUS,
     VIRGO,
 ];
@@ -153,8 +153,8 @@ pub const SAGGITTARIUS: Constellation =  Constellation {
     ]
 };
 
-pub const SCORPIUS: Constellation =  Constellation {
-    name: "Scorpius",
+pub const SCORPIO: Constellation =  Constellation {
+    name: "Scorpio",
     pattern: [
         "                              ",
         "                        *     ",
