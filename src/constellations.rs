@@ -4,15 +4,135 @@ pub struct Constellation {
 }
 
 pub const CONSTELLATIONS : &[Constellation] = &[
+    ARIES,
     AQUARIUS,
     BIG_DIPPER,
     CANCER,
+    CAPRICORN,
+    GEMINI,
     LIBRA,
+    LEO,
     LEPUS,
+    PISCES,
     SAGGITTARIUS,
     SCORPIUS,
+    TAURUS,
     VIRGO,
 ];
+
+pub const LEO: Constellation =  Constellation {
+    name: "Leo",
+    pattern: [
+        "                              ",
+        "                       *      ",
+        "                           *  ",
+        "                   *          ",
+        "                              ",
+        "                   *          ",
+        "      *               *       ",
+        "                              ",
+        "        *               *     ",
+        " *                            ",
+        "                              ",
+        "                              ",
+        "                              ",
+    ]
+};
+
+pub const TAURUS: Constellation =  Constellation {
+    name: "Taurus",
+    pattern: [
+        "                              ",
+        "                              ",
+        "     *                        ",
+        "                              ",
+        "   *         *                ",
+        "            *  *              ",
+        "                   *          ",
+        "                        **    ",
+        "                              ",
+        "                   *          ",
+        "                        *     ",
+        "                              ",
+        "                              ",
+    ]
+};
+
+pub const GEMINI: Constellation =  Constellation {
+    name: "Gemini",
+    pattern: [
+        "                 *            ",
+        "     *                        ",
+        "            *                 ",
+        "                   *         *",
+        "                          * * ",
+        "  *     *                     ",
+        "     *                   *    ",
+        "                              ",
+        "   *       *     *            ",
+        "                             ",
+        "                         *     ",
+        "              *               ",
+        "                       *      ",
+    ]
+};
+
+pub const ARIES: Constellation =  Constellation {
+    name: "Aries",
+    pattern: [
+        "                              ",
+        "                              ",
+        "                              ",
+        "   *                          ",
+        "                  *           ",
+        "                              ",
+        "                        *     ",
+        "                         *    ",
+        "                              ",
+        "                              ",
+        "                              ",
+        "                              ",
+        "                              ",
+    ]
+};
+
+pub const CAPRICORN: Constellation =  Constellation {
+    name: "Capricorn",
+    pattern: [
+        "                              ",
+        "                           *  ",
+        " *                        *   ",
+        "     *          *             ",
+        "                              ",
+        "                       *      ",
+        "                              ",
+        "        *                     ",
+        "                              ",
+        "              *     *         ",
+        "                   *          ",
+        "                              ",
+        "                              ",
+    ]
+};
+
+pub const PISCES: Constellation =  Constellation {
+    name: "Pisces",
+    pattern: [
+        "                              ",
+        "          *                   ",
+        "         *                    ",
+        "          *                   ",
+        "                              ",
+        "                              ",
+        "        *                     ",
+        "                              ",
+        "      *                       ",
+        "             *      *    *    ",
+        "       *                *   * ",
+        "  *                     *  *  ",
+        "                              ",
+    ]
+};
 
 pub const SAGGITTARIUS: Constellation =  Constellation {
     name: "Saggittarius",
