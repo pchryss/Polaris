@@ -2,12 +2,12 @@ use std::time::{Duration, Instant};
 
 use color_eyre::Result;
 use crossterm::event::{self, Event, KeyCode};
-use polaris::load_data;
-use polaris::menu::*;
-use polaris::game::*;
-use polaris::planetarium::*;
-use polaris::constellations::*;
-use polaris::save_data;
+use play_polaris::load_data;
+use play_polaris::menu::*;
+use play_polaris::game::*;
+use play_polaris::planetarium::*;
+use play_polaris::constellations::*;
+use play_polaris::save_data;
 use ratatui::{
     DefaultTerminal,
 };

@@ -1,5 +1,5 @@
 [package]
-name = "polaris"
+name = "play-polaris"
 version = "1.0.0"
 edition = "2024"
 description = "An interactive terminal-based application for exploring and learning about constellations."
